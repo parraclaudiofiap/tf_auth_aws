@@ -22,10 +22,10 @@ jobs:
       - name: Install dependencies
         run: |
           cd function/
-          npm ci
+          npm ci 
+          npm test
           
       - name: deploy
         run: |
           terraform init
           terraform validate
-          terraform apply -auto-approve
