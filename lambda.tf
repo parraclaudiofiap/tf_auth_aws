@@ -8,8 +8,10 @@ resource "aws_lambda_function" "auth_lambda" {
   timeout          = 10
   environment {
     variables = {
-      AWS_COGNITO_USER_POOL_ID = aws_cognito_user_pool.auth_user_pool.id,
-      AWS_COGNITO_CLIENT_ID    = aws_cognito_user_pool_client.client.id
+      AWS_COGNITO_USER_POOL_ID          = aws_cognito_user_pool.auth_user_pool.id,
+      AWS_COGNITO_CLIENT_ID             = aws_cognito_user_pool_client.client.id,
+      AWS_COGNITO_DEFAULT_USER          = aws_cognito_user.user_anonimo.username,
+      AWS_COGNITO_DEFAULT_USER_PASSWORD = aws_cognito_user.user_anonimo.password
     }
   }
 }
@@ -49,4 +51,10 @@ data "archive_file" "lambda_package" {
   type        = "zip"
   source_dir  = "function"
   output_path = "index.zip"
+}
+
+resource "aws_cognito_user" "user_anonimo" {
+  user_pool_id = aws_cognito_user_pool.pool.id
+  username     = "anonimo"
+  password     = "Test@123"
 }
