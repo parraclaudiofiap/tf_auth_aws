@@ -24,6 +24,7 @@ jobs:
         run: |
           cd function/
           npm ci
+          
       - name: deploy
         run: |
           terraform init
