@@ -43,3 +43,4 @@ function/node_modules/*
 *.backup
 .terraform/*
 .terraform*
+*.zip
