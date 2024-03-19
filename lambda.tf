@@ -54,7 +54,7 @@ data "archive_file" "lambda_package" {
 }
 
 resource "aws_cognito_user" "user_anonimo" {
-  user_pool_id = aws_cognito_user_pool.pool.id
+  user_pool_id = aws_cognito_user_pool.auth_user_pool.id
   username     = "anonimo"
   password     = "Test@123"
 }
