@@ -66,6 +66,7 @@ exports.handler =  async function(event, context, callback) {
   if(event.body == undefined)
   {
     const token = await signIn(AnonimousUsername,AnonimousPassword)
+    callback(null,token)
   }
   else
   {
@@ -77,7 +78,8 @@ exports.handler =  async function(event, context, callback) {
     } = json
   
     const token = await signIn(username,password)
+    callback(null,token)
   }
 
-  callback(null,token)
+
 }    

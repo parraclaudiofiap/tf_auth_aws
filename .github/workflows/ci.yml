@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd function/
-          npm ci
+          npm ci 
           
       - name: deploy
         run: |
